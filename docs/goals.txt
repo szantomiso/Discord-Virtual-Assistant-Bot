@@ -1,0 +1,18 @@
+
+#Ideas
+   This bot could be able to:
+     - Create an event in Google Calendar
+     - Read events on Google Calendar (i.e. if an event is updated or cancelled)
+     - Tell you the weather for the day and give you advice based on it (if it says it'll be raining, it might suggest you bring your umbrella)
+     - Summarize YouTube videos or general text given (?)
+     - Reminder at disclosed time
+     - Pomodoro Timer with reminders (me like this one)
+     - To Do List (maybe into keep notes or just store it somewhere and
+        cross out things when they are done (remove them from the list)
+        add things to the list
+        maybe deadlines could be added to items?
+        priority (1 to 5)?
+     - Dictionary or Synonym finder (?)
+     - Stock price checker (?)
+        maybe with the chatgpt api? --> but that would just search for it on the web, no?
+     - Snake game (hehe, but how?)
