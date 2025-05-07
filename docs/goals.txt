@@ -16,3 +16,11 @@
      - Stock price checker (?)
         maybe with the chatgpt api? --> but that would just search for it on the web, no?
      - Snake game (hehe, but how?)
+
+#Ones that should be easier to do
+    - Reminder at disclosed time -- /reminder
+    - Pomodoro Timer -- /pomodoro
+    - Weather telling -- /weather
+        maybe we need the time when we want to know the weather
+    - To Do List -- /todo
+    - MiniAI (max 100 words answers) -- /miniai
