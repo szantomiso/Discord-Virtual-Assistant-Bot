@@ -29,3 +29,6 @@ def local_llm_response(prompt):
         return response.json()["response"]
     else:
         return f"AAAAAAAAHHHHHHHHH: {response.status_code} - {response.text}"
+
+def reminder(user_input):
+    pass

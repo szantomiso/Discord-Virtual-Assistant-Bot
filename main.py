@@ -45,16 +45,18 @@ async def on_message(message: Message) -> None:
     user_message: str = message.content
     channel: str = str(message.channel)
 
-    for text in ["/miniai", "/ai"]:
+    for text in ["/miniai", "/ai", "/reminder", "/pomodoro"]:
         if message.content.startswith(text):
             command = message.content.split(" ")[0]
             user_message = message.content.replace(text, "")
-            print("Yes, it was an ai command!")
+            print("Yes, it was a command!")
 
     if command == "/miniai" or command == "/ai":
         bot_response = local_llm_response(prompt=user_message)
-        print("I'll try to send the message!")
         await send_message(message, bot_response)
+    elif command == "/reminder":
+        response = reminder(user_message)
+        await send_message(message, response)
     else:
         print(f"[{channel}] {username}: {user_message}")
         await send_message(message, user_message)
