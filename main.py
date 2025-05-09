@@ -3,11 +3,10 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 from responses import *
-
+import openai
 #token loading safely
 load_dotenv()
 TOKEN: Final[str] = os.getenv("DISCORD_TOKEN")
-print(TOKEN)
 
 #setup bot
 intents: Intents = Intents.default()
@@ -26,7 +25,7 @@ async def send_message(message: Message, user_message: str) -> None:
 
     try:
         response: str = get_response(user_message)
-        await message.author.send(response) if is_private else message.channel.send(response)
+        await message.author.send(response) if is_private else await message.channel.send(response)
     except Exception as e:
         print(e)
 
@@ -39,12 +38,23 @@ async def on_message(message: Message) -> None:
     if message.author == client.user:
         return
 
+    command = None
     username: str = str(message.author)
     user_message: str = message.content
     channel: str = str(message.channel)
 
-    print(f"[{channel}] {username}: {user_message}")
-    await send_message(message, user_message)
+    for text in ["/miniai", "/ai"]:
+        if message.content.startswith(text):
+            command = message.content.split(" ")[0]
+            user_message = message.content.replace(text, "")
+            print(command, user_message)
+
+    if command == "/miniai" or command == "/ai":
+        bot_response = local_llm_response(prompt=user_message)
+        await send_message(message, f"Answer: {bot_response}")
+    else:
+        print(f"[{channel}] {username}: {user_message}")
+        await send_message(message, user_message)
 
 def main() -> None:
     client.run(token=TOKEN)
