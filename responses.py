@@ -18,14 +18,12 @@ def get_response(user_input: str) -> str:
 
 #llama model needed
 def local_llm_response(prompt):
-    print("Hello, I'm working!")
-    url = "http://localhost:11434"
+    url = "http://localhost:11434/api/generate"
     payload = {
         "model": "mistral",
         "prompt": prompt,
         "stream": False
     }
-
     response = requests.post(url, json=payload)
     if response.status_code == 200:
         return response.json()["response"]

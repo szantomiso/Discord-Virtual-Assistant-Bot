@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 from responses import *
-import openai
+
 #token loading safely
 load_dotenv()
 TOKEN: Final[str] = os.getenv("DISCORD_TOKEN")
@@ -15,6 +15,9 @@ client: Client = Client(intents=intents)
 
 #msg functionality
 async def send_message(message: Message, user_message: str) -> None:
+    if message.author == client.user:
+        return
+
     if not user_message:
         print("Message was empty (probably intents not enabled properly)")
         return
@@ -24,8 +27,7 @@ async def send_message(message: Message, user_message: str) -> None:
         user_message = user_message[1:]
 
     try:
-        response: str = get_response(user_message)
-        await message.author.send(response) if is_private else await message.channel.send(response)
+        await message.author.send(user_message) if is_private else await message.channel.send(user_message)
     except Exception as e:
         print(e)
 
@@ -47,17 +49,18 @@ async def on_message(message: Message) -> None:
         if message.content.startswith(text):
             command = message.content.split(" ")[0]
             user_message = message.content.replace(text, "")
-            print(command, user_message)
+            print("Yes, it was an ai command!")
 
     if command == "/miniai" or command == "/ai":
         bot_response = local_llm_response(prompt=user_message)
-        await send_message(message, f"Answer: {bot_response}")
+        print("I'll try to send the message!")
+        await send_message(message, bot_response)
     else:
         print(f"[{channel}] {username}: {user_message}")
         await send_message(message, user_message)
 
 def main() -> None:
-    client.run(token=TOKEN)
+    client.run(TOKEN)
 
 if __name__ == "__main__":
     main()
