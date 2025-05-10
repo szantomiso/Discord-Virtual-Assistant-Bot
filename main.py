@@ -55,11 +55,14 @@ async def on_message(message: Message) -> None:
         bot_response = local_llm_response(prompt=user_message)
         await send_message(message, bot_response)
     elif command == "/reminder":
-        response = reminder(user_message)
+        #   /reminder 1h 12m 15s "Feed the thing :["
+        #   /reminder 20m "What the dog doing?"
+        response = reminder(user_message, message)
         await send_message(message, response)
     else:
         print(f"[{channel}] {username}: {user_message}")
-        await send_message(message, user_message)
+        response = get_response(user_message)
+        await send_message(message, response)
 
 def main() -> None:
     client.run(TOKEN)
