@@ -28,3 +28,13 @@
         add items to list -- add
         check / remove items on/from list -- done, remove
         show the whole list -- list
+
+#TODO
+    -Make the Google calendar methods
+        listing all events on to chat
+        adding an event via chat
+        deleting event via chat (?)
+    -README prettier
+    -help function
+    -weather teller (?)
+    -If not weather teller, then what the f*ck?
