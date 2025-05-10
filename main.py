@@ -59,6 +59,11 @@ async def on_message(message: Message) -> None:
         #   /reminder 20m "What the dog doing?"
         response = reminder(user_message, message)
         await send_message(message, response)
+    elif command == "/pomodoro":
+        #   /reminder 1h 12m 15s "Feed the thing :["
+        #   /reminder 20m "What the dog doing?"
+        response = await pomodoro(user_message, message)
+        await send_message(message, response)
     else:
         print(f"[{channel}] {username}: {user_message}")
         response = get_response(user_message)
