@@ -38,10 +38,10 @@ def todo(user_input, user_id):
         if not user_tasks:
             return "You don't have any tasks yet."
 
-        tasks = ""
+        tasks = " \n"
 
         for i, task in enumerate(user_tasks):
-            tasks += f"({i+1}) {task}\n"
+            tasks += f"{i+1}. {task}\n"
 
         return tasks
 

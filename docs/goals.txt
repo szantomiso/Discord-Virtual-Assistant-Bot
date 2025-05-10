@@ -20,13 +20,14 @@
 #Ones that should be easier to do
     - Weather telling -- /weather
         maybe we need the time when we want to know the weather
-    - To Do List -- /todo
-        add items to list
-        check / remove items on/from list
-        show the whole list
+
     - Help
         lists all the commands and their workings
     DONE:
     - MiniAI (max 100 words answers) -- /miniai, /ai
     - Reminder at disclosed time -- /reminder
     - Pomodoro Timer -- /pomodoro
+    - To Do List -- /todo
+        add items to list -- add
+        check / remove items on/from list -- done, remove
+        show the whole list -- list
