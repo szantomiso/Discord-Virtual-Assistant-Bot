@@ -55,13 +55,13 @@ async def on_message(message: Message) -> None:
         bot_response = local_llm_response(prompt=user_message)
         await send_message(message, bot_response)
     elif command == "/reminder":
-        #   /reminder 1h 12m 15s "Feed the thing :["
-        #   /reminder 20m "What the dog doing?"
+        #   /reminder <time> <message>
+        #   /reminder 20m 15s "What the dog doing?"
         response = reminder(user_message, message)
         await send_message(message, response)
     elif command == "/pomodoro":
-        #   /reminder 1h 12m 15s "Feed the thing :["
-        #   /reminder 20m "What the dog doing?"
+        #   /pomodoro <work_time> <break_time> <repeats>
+        #   /reminder 20m 15s 1h 1m 1s 5
         response = await pomodoro(user_message, message)
         await send_message(message, response)
     else:
