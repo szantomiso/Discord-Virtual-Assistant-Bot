@@ -24,6 +24,8 @@
         add items to list
         check / remove items on/from list
         show the whole list
+    - Help
+        lists all the commands and their workings
     DONE:
     - MiniAI (max 100 words answers) -- /miniai, /ai
     - Reminder at disclosed time -- /reminder

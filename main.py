@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 from discord import Intents, Client, Message
 from responses import *
 
-#token loading safely
+
 load_dotenv()
 TOKEN: Final[str] = os.getenv("DISCORD_TOKEN")
 
-#setup bot
+
 intents: Intents = Intents.default()
 intents.message_content = True
 client: Client = Client(intents=intents)
@@ -45,7 +45,7 @@ async def on_message(message: Message) -> None:
     user_message: str = message.content
     channel: str = str(message.channel)
 
-    for text in ["/miniai", "/ai", "/reminder", "/pomodoro"]:
+    for text in ["/miniai", "/ai", "/reminder", "/pomodoro", "/todo"]:
         if message.content.startswith(text):
             command = message.content.split(" ")[0]
             user_message = message.content.replace(text, "")
@@ -63,6 +63,11 @@ async def on_message(message: Message) -> None:
         #   /pomodoro <work_time> <break_time> <repeats>
         #   /reminder 20m 15s 1h 1m 1s 5
         response = await pomodoro(user_message, message)
+        await send_message(message, response)
+    elif command == "/todo":
+        #   /pomodoro <work_time> <break_time> <repeats>
+        #   /reminder 20m 15s 1h 1m 1s 5
+        response = todo(user_message, message.author.id)
         await send_message(message, response)
     else:
         print(f"[{channel}] {username}: {user_message}")

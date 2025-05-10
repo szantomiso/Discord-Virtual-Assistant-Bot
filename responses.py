@@ -2,6 +2,7 @@ from random import choice, randint
 import requests
 from reminder import *
 from pomodoro import *
+from todo import *
 
 def get_response(user_input: str) -> str:
     lowered: str = user_input.lower()
