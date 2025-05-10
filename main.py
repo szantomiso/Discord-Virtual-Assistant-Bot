@@ -51,7 +51,10 @@ async def on_message(message: Message) -> None:
             user_message = message.content.replace(text, "")
             print("Yes, it was a command!")
 
-    if command == "/miniai" or command == "/ai":
+
+    if command == "/help" or command == "/h":
+        pass
+    elif command == "/miniai" or command == "/ai":
         bot_response = local_llm_response(prompt=user_message)
         await send_message(message, bot_response)
     elif command == "/reminder":
