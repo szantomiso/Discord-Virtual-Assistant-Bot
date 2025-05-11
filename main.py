@@ -45,7 +45,7 @@ async def on_message(message: Message) -> None:
     user_message: str = message.content
     channel: str = str(message.channel)
 
-    for text in ["/miniai", "/ai", "/reminder", "/pomodoro", "/todo"]:
+    for text in ["/miniai", "/ai", "/reminder", "/pomodoro", "/todo", "/calendar"]:
         if message.content.startswith(text):
             command = message.content.split(" ")[0]
             user_message = message.content.replace(text, "")
@@ -57,6 +57,11 @@ async def on_message(message: Message) -> None:
     elif command == "/miniai" or command == "/ai":
         bot_response = local_llm_response(prompt=user_message)
         await send_message(message, bot_response)
+    elif command == "/calendar":
+        #   /calendar list 5
+        #   /calendar add title = Meet with Stalin start = 2025-04-10T22:00:00+02:00 end = 2025-04-10T22:05:00+02:00 color = red location = Poland description = No description, just action
+        response = calendar_handler(user_message, message)
+        await send_message(message, response)
     elif command == "/reminder":
         #   /reminder <time> <message>
         #   /reminder 20m 15s "What the dog doing?"

@@ -3,6 +3,7 @@ import requests
 from reminder import *
 from pomodoro import *
 from todo import *
+from calendar_function import *
 
 def get_response(user_input: str) -> str:
     lowered: str = user_input.lower()
