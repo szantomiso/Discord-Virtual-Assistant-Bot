@@ -103,5 +103,3 @@ def get_events(creds: Credentials, events_num: int = 5):
 
   except HttpError as error:
     return[f"An error occurred: {error}"]
-
-
