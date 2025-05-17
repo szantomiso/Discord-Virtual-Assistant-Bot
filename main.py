@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 from responses import *
+from help import *
 
 
 load_dotenv()
@@ -45,7 +46,7 @@ async def on_message(message: Message) -> None:
     user_message: str = message.content
     channel: str = str(message.channel)
 
-    for text in ["/miniai", "/ai", "/reminder", "/pomodoro", "/todo", "/calendar"]:
+    for text in ["/miniai", "/ai", "/reminder", "/pomodoro", "/todo", "/calendar", "/help", "/h"]:
         if message.content.startswith(text):
             command = message.content.split(" ")[0]
             user_message = message.content.replace(text, "")
@@ -53,7 +54,8 @@ async def on_message(message: Message) -> None:
 
 
     if command == "/help" or command == "/h":
-        pass
+        bot_response = help_handler()
+        await send_message(message, bot_response)
     elif command == "/miniai" or command == "/ai":
         bot_response = local_llm_response(prompt=user_message)
         await send_message(message, bot_response)
