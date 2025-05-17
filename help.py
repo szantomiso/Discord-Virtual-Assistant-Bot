@@ -1,6 +1,6 @@
-def help_handler() -> str:
+def help_handler():
     return (
-        "**Here are all the **\n\n"
+        "**Here are all the commands you can use:**\n\n"
         "`/miniai <prompt>` or `/ai <prompt>`\n"
         "\t• You can ask the bot anything using the local LLM\n\n"
         "`/calendar list <x>`\n"
