@@ -11,12 +11,12 @@ from googleapiclient.errors import HttpError
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
-def create_event(user_input, message) -> str:
+def create_event(user_input, message):
 
   creds = None
 
-  if os.path.exists("credentials.json"):
-    creds = Credentials.from_authorized_user_file("credentials.json", SCOPES)
+  if os.path.exists("token.json"):
+    creds = Credentials.from_authorized_user_file("token.json", SCOPES)
 
   if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
@@ -25,7 +25,7 @@ def create_event(user_input, message) -> str:
       flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
       creds = flow.run_local_server(port=0)
 
-    with open("credentials.json", "w") as token:
+    with open("token.json", "w") as token:
       token.write(creds.to_json())
 
 
@@ -56,10 +56,10 @@ def create_event(user_input, message) -> str:
     return f"Event created:\n {event.get('htmlLink')}"
 
   except HttpError as error:
-    return f"An error occurred while creating the event. :/\n Please try again later."
+    return f"An error occurred while creating the event. :/\n Please try again later. {error}"
 
 
-def calendar_handler(user_input, message) -> str:
+def calendar_handler(user_input, message):
   creds = get_stored_credentials()
 
   args = user_input.strip().split(" ", 1)
@@ -77,8 +77,8 @@ def calendar_handler(user_input, message) -> str:
 
 def get_stored_credentials() -> Credentials:
   creds = None
-  if os.path.exists("credentials.json"):
-    creds = Credentials.from_authorized_user_file("credentials.json", SCOPES)
+  if os.path.exists("token.json"):
+    creds = Credentials.from_authorized_user_file("token.json", SCOPES)
   if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
       creds.refresh(Request())

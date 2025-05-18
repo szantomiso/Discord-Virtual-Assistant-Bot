@@ -23,6 +23,6 @@ def help_handler() -> str:
         "`/todo done <#>`\n"
         "\t• Removes a task by its number\n"
         "\t• e.g. `/todo done 2`\n\n"
-        "`/help`\n"
+        "`/help` or `/h`\n"
         "\t• Shows this help message\n"
     )
