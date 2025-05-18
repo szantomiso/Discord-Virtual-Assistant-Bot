@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 from responses import *
-from help import *
+
 
 
 load_dotenv()
@@ -50,7 +50,7 @@ async def on_message(message: Message) -> None:
         if message.content.startswith(text):
             command = message.content.split(" ")[0]
             user_message = message.content.replace(text, "")
-            print("Yes, it was a command!")
+            #print("Yes, it was a command!")
 
 
     if command == "/help" or command == "/h":
