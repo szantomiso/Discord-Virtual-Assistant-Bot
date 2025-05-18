@@ -10,7 +10,7 @@ def get_response(user_input: str) -> str:
     lowered: str = user_input.lower()
 
     if lowered == "-_-":
-        return "Why are we still here? Just to suffer? Or just to be quiet?"
+        return "Why are we still here? Just to suffer? \n...Or just to be quiet?"
     elif "hello there" in lowered:
         return "General Kenobi!"
     elif "hello" in lowered:

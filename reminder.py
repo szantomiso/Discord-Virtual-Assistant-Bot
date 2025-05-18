@@ -1,7 +1,7 @@
 import asyncio
 import re
 
-def reminder(user_input, message):
+def reminder(user_input, message) -> str:
 #   1h 12m 15s "Feed the thing :["
 #   20m "What the dog doing?"
     time_pattern = r"(?:(\d+)\s*h)?\s*(?:(\d+)\s*m)?\s*(?:(\d+)\s*s)?\s*\"(.+?)\""

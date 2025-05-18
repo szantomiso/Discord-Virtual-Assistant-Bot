@@ -14,7 +14,7 @@ def parse_time_string(time_str):
             total_seconds += value
     return total_seconds
 
-async def pomodoro(user_input: str, message):
+async def pomodoro(user_input: str, message) -> str:
     try:
         parts = user_input.strip().split()
         if len(parts) < 3:

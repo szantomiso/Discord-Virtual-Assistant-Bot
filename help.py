@@ -1,4 +1,4 @@
-def help_handler():
+def help_handler() -> str:
     return (
         "**Here are all the commands you can use:**\n\n"
         "`/miniai <prompt>` or `/ai <prompt>`\n"

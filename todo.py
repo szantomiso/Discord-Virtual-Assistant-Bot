@@ -13,7 +13,7 @@ def save_todos(todos):
     with open(TODO_FILE, "w") as f:
         json.dump(todos, f, indent=4)
 
-def todo(user_input, user_id):
+def todo(user_input, user_id) -> str:
     todos = load_todos()
     user_id_str = str(user_id)
     user_tasks = todos.get(user_id_str, [])

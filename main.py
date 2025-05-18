@@ -80,7 +80,7 @@ async def on_message(message: Message) -> None:
         response = todo(user_message, message.author.id)
         await send_message(message, response)
     else:
-        print(f"[{channel}] {username}: {user_message}")
+        #print(f"[{channel}] {username}: {user_message}")
         response = get_response(user_message)
         await send_message(message, response)
 

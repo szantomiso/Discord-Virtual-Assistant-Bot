@@ -1,6 +1,6 @@
 import requests
 
-def local_llm_response(prompt):
+def local_llm_response(prompt) -> str:
     url = "http://localhost:11434/api/generate"
     payload = {
         "model": "mistral",
